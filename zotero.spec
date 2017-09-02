@@ -1,5 +1,5 @@
 Name:    zotero
-Version: 5.0.17
+Version: 5.0.27
 Release: 1%{?dist}
 Summary: Your personal research assistant
 
