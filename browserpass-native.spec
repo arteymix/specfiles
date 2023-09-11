@@ -45,21 +45,22 @@ DESTDIR=%{buildroot} make install
 mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_libdir}/mozilla/native-messaging-hosts
 cp %{buildroot}%{_libdir}/browserpass/hosts/firefox/com.github.browserpass.native.json %{buildroot}%{_libdir}/mozilla/native-messaging-hosts/com.github.browserpass.native.json
-mkdir -p %{buildroot}/etc/chromium/native-messaging-hosts
-cp %{buildroot}%{_libdir}/browserpass/hosts/chromium/com.github.browserpass.native.json %{buildroot}/etc/chromium/native-messaging-hosts/com.github.browserpass.native.json
-mkdir -p %{buildroot}/etc/opt/chrome/native-messaging-hosts
-cp %{buildroot}%{_libdir}/browserpass/hosts/chromium/com.github.browserpass.native.json %{buildroot}/etc/opt/chrome/native-messaging-hosts/com.github.browserpass.native.json
+mkdir -p %{buildroot}%{_sysconfdir}/chromium/native-messaging-hosts
+cp %{buildroot}%{_libdir}/browserpass/hosts/chromium/com.github.browserpass.native.json %{buildroot}%{_sysconfdir}/chromium/native-messaging-hosts/com.github.browserpass.native.json
+mkdir -p %{buildroot}%{_sysconfdir}/opt/chrome/native-messaging-hosts
+cp %{buildroot}%{_libdir}/browserpass/hosts/chromium/com.github.browserpass.native.json %{buildroot}%{_sysconfdir}/opt/chrome/native-messaging-hosts/com.github.browserpass.native.json
+rm -r %{buildroot}%{_libdir}/browserpass
 
 %files
-%license /usr/share/licenses/browserpass/LICENSE
-%doc /usr/share/doc/browserpass/README.md
+%license %{_defaultlicensedir}/browserpass/LICENSE
+%doc %{_docdir}/browserpass/README.md
 %{_bindir}/browserpass
 
 %files firefox
 %{_libdir}/mozilla/native-messaging-hosts/com.github.browserpass.native.json
 
 %files chromium
-/etc/chromium/native-messaging-hosts/com.github.browserpass.native.json
+%{_sysconfdir}/chromium/native-messaging-hosts/com.github.browserpass.native.json
 
 %files chrome
-/etc/opt/chrome/native-messaging-hosts/com.github.browserpass.native.json
+%{_sysconfdir}/opt/chrome/native-messaging-hosts/com.github.browserpass.native.json
