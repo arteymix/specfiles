@@ -4,7 +4,7 @@
 
 Name: browserpass-native
 Version: 3.1.0
-Release:        %{autorelease}
+Release: %autorelease -b 2
 Summary: Browserpass - native messaging host
 
 License: ISC
@@ -15,12 +15,15 @@ BuildRequires: go
 
 %package firefox
 Summary: Browserpass native messaging host for Firefox
+Requires: firefox
 
 %package chromium
 Summary: Browserpass native messaging host for Chromium
+Requires: chromium
 
 %package chrome
 Summary: Browserpass native messaging host for Chrome
+Requires: google-chrome-stable
 
 %description
 This is a host application for browserpass browser extension providing it
