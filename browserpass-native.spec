@@ -4,7 +4,7 @@
 
 Name: browserpass-native
 Version: 3.1.0
-Release: %autorelease -b 2
+Release: 3%{?dist}
 Summary: Browserpass - native messaging host
 
 License: ISC
@@ -41,10 +41,10 @@ Messaging API.
 
 %build
 make configure
-make
+%make_build
 
 %install
-DESTDIR=%{buildroot} make install
+%make_install
 mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_libdir}/mozilla/native-messaging-hosts
 cp %{buildroot}%{_libdir}/browserpass/hosts/firefox/com.github.browserpass.native.json %{buildroot}%{_libdir}/mozilla/native-messaging-hosts/com.github.browserpass.native.json
@@ -67,3 +67,6 @@ rm -r %{buildroot}%{_libdir}/browserpass
 
 %files chrome
 %{_sysconfdir}/opt/chrome/native-messaging-hosts/com.github.browserpass.native.json
+
+%changelog
+%autochangelog
